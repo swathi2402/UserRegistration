@@ -21,6 +21,14 @@ public class UserRegistration {
 		
 	}
 	
+	private static boolean validatePhoneNumber(String email) {
+		String regex = "[1-9]{2}[\\s][1-9][0-9]{9}";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(email);
+		return matcher.matches();
+		
+	}
+	
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the first name: ");
@@ -43,6 +51,13 @@ public class UserRegistration {
 			System.out.println("Valid Email Id");
 		else
 			System.out.println("Invalid Email Id");
+		
+		System.out.println("Enter the Phone Number: ");
+		String phoneNumber = scanner.nextLine();
+		if(validatePhoneNumber(phoneNumber))
+			System.out.println("Valid Phone Number");
+		else
+			System.out.println("Invalid Phone Number");
 		scanner.close();		
 	}
 
