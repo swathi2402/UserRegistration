@@ -14,7 +14,7 @@ public class UserRegistration {
 	}
 	
 	private static boolean validateEmail(String email) {
-		String regex = "([a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9])(([+_.-][a-zA-Z0-9]*)?)(@[a-zA-Z0-9]+)([.])([a-z]{2,})(([.][a-z]{2})?)";
+		String regex = "([a-zA-Z][a-zA-Z0-9]*)(([+_.-][a-zA-Z0-9]+)?)(@[a-zA-Z0-9]+)([.])([a-z]{2,})(([.][a-z]{2})?)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
@@ -73,6 +73,17 @@ public class UserRegistration {
 			System.out.println("Valid password");
 		else
 			System.out.println("Invalid password");
+		
+		String[] emailsArray = {"abc@yahoo.com","abc-100@yahoo.com","abc.100@yahoo.com","abc111@abc.com","abc-100@abc.net","abc.100@abc.com.au","abc@1.com",
+				"abc@gmail.com.co","abc+100@gmail.com","abc","abc@.com.my","abc123@gmail.a","abc123@.com","abc123@.com.com",".abc@abc.com","abc()*@gmail.com","abc@%*.com",
+				"abc..2002@gmail.com","abc.@gmail.com","abc@abc@gmail.com","abc@gmail.com.1a","abc@gmail.com.aa.au"};
+		System.out.println("Checking validity of email address");
+		for(int index = 0; index < emailsArray.length; index++) {
+			if(validateEmail(emailsArray[index]))
+				System.out.println(emailsArray[index] + " - is valid");
+			else
+				System.out.println(emailsArray[index] + "  - is not valid");
+		}
 		scanner.close();		
 	}
 
