@@ -29,6 +29,14 @@ public class UserRegistration {
 		
 	}
 	
+	private static boolean validatePassword(String email) {
+		String regex = "[a-zA-Z]{8,}";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(email);
+		return matcher.matches();
+		
+	}
+	
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the first name: ");
@@ -58,6 +66,13 @@ public class UserRegistration {
 			System.out.println("Valid Phone Number");
 		else
 			System.out.println("Invalid Phone Number");
+		
+		System.out.println("Enter the password: ");
+		String password = scanner.nextLine();
+		if(validatePassword(password))
+			System.out.println("Valid password");
+		else
+			System.out.println("Invalid password");
 		scanner.close();		
 	}
 
