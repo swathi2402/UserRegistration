@@ -30,7 +30,7 @@ public class UserRegistration {
 	}
 	
 	private static boolean validatePassword(String email) {
-		String regex = "(?=.*[A-Z])(?=.*[0-9]).{8,}";
+		String regex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*\\-+=]).{8,}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
