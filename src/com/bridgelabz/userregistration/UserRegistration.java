@@ -13,6 +13,14 @@ public class UserRegistration {
 		
 	}
 	
+	private static boolean validateEmail(String email) {
+		String regex = "([a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9])(([+_.-][a-zA-Z0-9]*)?)(@[a-zA-Z0-9]+)([.])([a-z]{2,})(([.][a-z]{2})?)";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(email);
+		return matcher.matches();
+		
+	}
+	
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the first name: ");
@@ -28,6 +36,13 @@ public class UserRegistration {
 			System.out.println("Valid last name");
 		else
 			System.out.println("Invalid last name");
+		
+		System.out.println("Enter the Email: ");
+		String email = scanner.nextLine();
+		if(validateEmail(email))
+			System.out.println("Valid Email Id");
+		else
+			System.out.println("Invalid Email Id");
 		scanner.close();		
 	}
 
